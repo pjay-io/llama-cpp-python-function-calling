@@ -948,7 +948,7 @@ def functionary_chat_handler(
         call_id = str(uuid.uuid4()).split("-")[0]
         prompt = prompt +" id=call_" + call_id + " name=functions."
         completion: llama_types.Completion = llama.create_completion(
-            prompt=prompt, stop=stop, stream=False
+            prompt=prompt, stop=[stop, ' '], stream=False
         )  # type: ignore
         completion_text = completion["choices"][0]["text"]
         # strip " to=functions." and ending ":"
